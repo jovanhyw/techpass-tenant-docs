@@ -67,8 +67,22 @@ Make sure to have onboarded OTPaaS and created one or more OTP apps. More inform
 3. When editing the whitelist value, take note that it cannot be updated to be of another type. Thus a email domain whitelist cannot be updated to be a user email whitelist and vice-versa.
 4. When editing the expiration, do take note that putting a hyphen(`-`) would remove the expiration of the whitelist. Also take note that only future dates are accepted for the expiration.
 5. Once done with editing, click on `Submit`. A confirmation prompt should popup asking to proceed with updating the whitelist. Click on `Confirm`.
-   ![Add Whitelist Prompt](./assets/edit_whitelist_prompt.png)
+   ![Edit Whitelist Prompt](./assets/edit_whitelist_prompt.png)
 
-   A notification should popup saying that the whitelists is successfully added.
+   A notification should popup saying that the whitelists is successfully updated.
 
-   ![Add Whitelist Success Notification](./assets/edit_whitelist_success.png)
+   ![Edit Whitelist Success Notification](./assets/edit_whitelist_success.png)
+
+## Delete whitelist of OTP App
+1. Make sure you are at the table of whitelists described in the **Viewing whitelists of OTP App** section.
+2. Hover over the `Actions` dropdown and select `Delete`.
+
+   ![Delete Whitelist Dropdown](./assets/delete_whitelist_dropdown.png)
+3. A confirmation prompt should popup asking to proceed with deleting the whitelist. Enter the whitelist value and click on `Delete`.
+   ![Delete Whitelist Prompt](./assets/delete_whitelist_prompt.png)
+
+   A notification should popup saying that the whitelists is successfully deleted.
+
+   ![Delete Whitelist Success Notification](./assets/delete_whitelist_success.png)
+
+
