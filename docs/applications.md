@@ -79,6 +79,9 @@ However, do take note that this **does not** apply to nested group(s). Only dire
 
 ?> For more information, visit [Redirect URI(reply URL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url) and [Restrictions on wildcards in redirect URIs](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url#restrictions-on-wildcards-in-redirect-uris).
 
+There are some default permissions that are assigned to an application upon creation. A request for consent to TechPass cloudops team will be generated automatically. There are no actions required by you at this point. However, you may encounter a sign in error if such consent is not provided. visit [here](./resources.md?id=need-admin-consent) for more info.
+
+
 ## Updating an App
 ?> It may take some time (5-15 seconds) for the changes made on application to take effect. Please wait before reloading.
 
