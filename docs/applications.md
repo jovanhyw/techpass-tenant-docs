@@ -52,6 +52,10 @@ Unchecking user assignment would make your application accessible to anyone with
 
 If you left this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
 
+### Mark As Published
+Checking this field will publish your application on TechPass portal.
+Leave as unchecked if your app should not be displayed to users e.g. apps for testing etc.
+
 ### Client Secrets
 The secret key is used by tenant services to authenticate itself to TechPass AAD. Each secret key is only valid for a period of one year once created. Please plan for secret rotation.
 
