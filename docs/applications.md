@@ -42,7 +42,7 @@ TechPass AAD will validate the `redirect_uri` parameter in all authorize HTTP re
 Unchecking this field will disable ALL user sign in to the tenant service.
 
 ### User Assignment Required
-This properties determines if a user needs to be granted access before he/she is allowed to sign into your app. Leaving this field uncheck means that **ALL** TechPass users will be able to sign into your app.
+This property determines if a user needs to be granted access before he/she is allowed to sign into your app. Leaving this field uncheck means that **ALL** TechPass users will be able to sign into your app.
 
 Careful consideration is required if you wish the alter the value of this field. Find out more about to how design your [Access Model](resources#concepts) with TechPass.
 
