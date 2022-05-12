@@ -17,7 +17,7 @@ Assuming you are already familiar with OAuth 2.0's Auth Code Flow with Proof Key
 
 Managing of applications is only possible if you are a tenant admin of your tenant.
 
-So please switch your role to **TENANT** after your sign into TechPass. (Refer [here](/docs/roles.md) on how to switch role)
+So please switch your role to **TENANT** after your sign into TechPass. (Refer [here](/roles.md) on how to switch role)
 
 Next, select the tenant you like to create the application, then click on Applications on the navigation side bar
 
