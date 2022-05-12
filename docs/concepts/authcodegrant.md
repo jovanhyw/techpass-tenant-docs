@@ -7,7 +7,7 @@ This guide will provide the streamlined instructions to application setup and en
 
 ### Pre-requisites
 * is a Tenant Admin of a TechPass Tenant
-* have a basic understanding of OAuth 2.0's Auth Code Flow with Proof Key for Code Exchange (PKCE), see: [Identity Provider and OAuth2 in TechPass](oauth2)
+* have a basic understanding of OAuth 2.0's Auth Code Flow with Proof Key for Code Exchange (PKCE), see: [Identity Provider and OAuth2 in TechPass](/concepts/oauth2.md)
 * your application portal design have a Frontend and Backend infrastructure setup
 
 ## [1] Create an application
@@ -40,7 +40,7 @@ Click Submit and Confirm to proceed the creation of the application. It may take
 
 ![updated_app_overview](assets/concept-authcodegrant/04-applicationsoverview.png)
 
-?> There are some default permissions that are assigned to an application upon creation. A request for consent to TechPass cloudops team will be generated automatically. There are no actions required by you at this point. However, you may encounter a sign in error if such consent is not provided. visit [here](./resources.md?id=need-admin-consent) for more info.
+?> There are some default permissions that are assigned to an application upon creation. A request for consent to TechPass cloudops team will be generated automatically. There are no actions required by you at this point. However, you may encounter a sign in error if such consent is not provided. visit [here](/resources.md?id=need-admin-consent) for more info.
 
 ## [2] Create secret
 Click on the pencil icon next to the application you wish to edit.
