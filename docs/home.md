@@ -1,8 +1,6 @@
 # Welcome to TechPass Tenant Admin Documentation!
 ![banner](assets/images/banner.png)
 
-!> TechPass is currently in active development. The information within this documentation will change without notice and may not be up-to-date.
-
 ## What is TechPass
 TechPass is an Identity & Access Management (IAM) and Single Sign On (SSO) Solution for services within the Singapore Government Technology Stack (SGTS).
 It is built to provide users with a seamless login experience across SG TechStack services and allow access control to be managed easily from a centralised location.
