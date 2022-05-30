@@ -1,13 +1,15 @@
 # Vendors
 ## Overview
-Tenant admins are able to invite vendors as Tenant co-admins, or as application users to your services. Localised identities can be created for them through the TechPass portal.
+Tenant admins are able to invite vendors as Tenant co-admins or application users to your services. Localised identities can be created for them through the TechPass portal.
 
-?> A vendor is a non-Government developer that is collaborating on a Government project or using a Tenant service
+?> A vendor is a non-public-officer developer that is collaborating on a Government project or using a SGTS service that has been integrated with TechPass.
 
 ## Provisioning Vendor Accounts
  1. To provision vendor accounts, click **Invite Vendor**
 
- 2. Fill in the required information and click **Submit**
+ 2. Gather the following information from your vendor. First and Last Name, a valid Singapore Mobile number, Company's Email, Name and Department. It's not the agency the vendor is attached to but where vendor was hired from.
+ 
+ 3. Fill in the required information and click **Submit**
 
 ![add_vendor](assets/add_vendor.gif)
 

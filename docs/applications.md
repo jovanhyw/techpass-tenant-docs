@@ -13,7 +13,7 @@ The ID of the App. This is used to identify your tenant service to TechPass AAD 
 The directory ID of TechPass AAD tenant with Microsoft's Azure AD SaaS. This allows the authentication endpoints to identify that the requests should be directed to TechPass AAD.
 
 ### Common Endpoints
-This drawer popup contains the URLs for needed for using the Auth Code grant and Implicit Grant flows. Remember to replace the values in square brackets.
+This drawer popup contains the URLs needed for using the Authorization Code and Client Credentials grant flows. Remember to replace the values in square brackets.
 
 ### Owners
 A list of users that are has the permission to make changes to the Client App properties, which should typically be the administrators of the Tenant Namespace.
@@ -52,17 +52,12 @@ Unchecking user assignment would make your application accessible to anyone with
 
 If you left this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
 
-### Implicit Grant
-Implicit grant is less secure than other grant flows and disabled by default.
-
-To enable implicit grant, check the corresponding boxes to allow an Access Token or ID Token or both to be issued in an implicit grant flow.
-
-!> If you do not use implicit grant, please keep the boxes unchecked.
-
-?> More information regarding Implicit Grant is available [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow).
-
 ### Client Secrets
-The secret key is used by tenant services to authenticate itself to TechPass AAD. Each secret key is only valid for a period of one year once created.
+The secret key is used by tenant services to authenticate itself to TechPass AAD. Each secret key is only valid for a period of one year once created. Please plan for secret rotation.
+
+### Client Certificates
+The certificate is used by tenant services to authenticate itself to TechPass AAD via client credentials grant flow. 
+This is the preferred method recommended by CSG to establish a connection from an application to TechPass AAD. They also recommend a 1-Year maximum certificate validity. So you need to plan for certificate rotation.
 
 ### Assigned Users and Groups
 A list of users and/or user groups that has been granted permission to sign in to your tenant service. If you add a user group, ALL users within that group will be granted permission.
