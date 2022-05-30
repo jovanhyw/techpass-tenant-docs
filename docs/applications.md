@@ -13,7 +13,7 @@ The ID of the App. This is used to identify your tenant service to TechPass AAD 
 The directory ID of TechPass AAD tenant with Microsoft's Azure AD SaaS. This allows the authentication endpoints to identify that the requests should be directed to TechPass AAD.
 
 ### Common Endpoints
-This drawer popup contains the URLs for needed for using the Authorizarion Code and Client Credentials grant flows. Remember to replace the values in square brackets.
+This drawer popup contains the URLs needed for using the Authorization Code and Client Credentials grant flows. Remember to replace the values in square brackets.
 
 ### Owners
 A list of users that are has the permission to make changes to the Client App properties, which should typically be the administrators of the Tenant Namespace.

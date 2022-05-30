@@ -2,7 +2,7 @@
 ## Overview
 Tenant admins are able to invite vendors as Tenant co-admins or application users to your services. Localised identities can be created for them through the TechPass portal.
 
-?> A vendor is a non-public-officer developer that is collaborating on a Government project or using a SGTS service that has been integrated with TechPass
+?> A vendor is a non-public-officer developer that is collaborating on a Government project or using a SGTS service that has been integrated with TechPass.
 
 ## Provisioning Vendor Accounts
  1. To provision vendor accounts, click **Invite Vendor**
