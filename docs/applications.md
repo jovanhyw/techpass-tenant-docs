@@ -52,15 +52,6 @@ Unchecking user assignment would make your application accessible to anyone with
 
 If you left this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
 
-### Implicit Grant
-Implicit grant is less secure than other grant flows and disabled by default.
-
-To enable implicit grant, check the corresponding boxes to allow an Access Token or ID Token or both to be issued in an implicit grant flow.
-
-!> If you do not use implicit grant, please keep the boxes unchecked.
-
-?> More information regarding Implicit Grant is available [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow).
-
 ### Client Secrets
 The secret key is used by tenant services to authenticate itself to TechPass AAD. Each secret key is only valid for a period of one year once created.
 
