@@ -16,4 +16,4 @@ The table below shows the API endpoints for staging and production environments 
 | Environment | Automation API Endpoint               |
 | ----------- | ------------------------------------- |
 | STG         | https://api.stg.techpass.suite.gov.sg |
-| PROD        | https://api.techpass.gov.sg           |
+| PROD        | https://api.techpass.suite.gov.sg     |

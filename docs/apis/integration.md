@@ -77,7 +77,7 @@ curl -X POST 'https://login.microsoftonline.com/edf6f660-7319-45db-8531-fdbd4604
 ### Example
 As an example, we can call the **GET /iam/namespace/:namespace/groups** API by providing the **api key** and the **bearer token** to the request as shown below:
 ```
-curl 'https://api.dev.techpass.gov.sg/iam/namespace/MYNAMESPACE/groups' \
+curl 'https://api.dev.techpass.suite.gov.sg/iam/namespace/MYNAMESPACE/groups' \
   -H 'x-api-key: dOwPeMjDcL9sxf6eChJAY1uidoDWnarjagKfpuwS' \
   -H 'Accept: application/json' \
   -H 'Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkU1WWI4TFlCZFpHN3E4aExZajhCT2VpTGZuOUt6d2M4WjRnZXpNdklZT0kiLCJhbGciOiJSUzI1NiIsIng1dCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyIsImtpZCI6Im5PbzNaRHJPRFhFSzFqS1doWHNsSFJfS1hFZyJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC9lZGY2ZjY2MC03MzE5LTQ1ZGItODUzMS1mZGJkNDYwNDc5MjEvIiwiaWF0IjoxNjEyMzIyMDY0LCJuYmYiOjE2MTIzMjIwNjQsImV4cCI6MTYxMjMyMzU2NCwiYWlvIjoiRTJaZ1lFZzNWZG1mNmhzcHYvdVBNYmZmOC9NQ0FBPT0iLCJhcHBfZGlzcGxheW5hbWUiOiJzaGlwOkF1dG9tYXRpb24iLCJhcHBpZCI6ImUyOTBhOTFjLTg0NjktNDgwOC1iOWZjLTc2OWI4MjgwN2YwNSIsImFwcGlkYWNyIjoiMSIsImlkcCI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0L2VkZjZmNjYwLTczMTktNDVkYi04NTMxLWZkYmQ0NjA0NzkyMS8iLCJpZHR5cCI6ImFwcCIsIm9pZCI6IjNlNmIyZTg3LTBjNjktNGMxMS1hMGYzLWJmMGY0MTU4ZjlhYiIsInJoIjoiMC5BQUFBWVBiMjdSbHoyMFdGTWYyOVJnUjVJUnlwa09KcGhBaEl1ZngybTRLQWZ3VS1BQUEuIiwic3ViIjoiM2U2YjJlODctMGM2OS00YzExLWEwZjMtYmYwZjQxNThmOWFiIiwidGVuYW50X3JlZ2lvbl9zY29wZSI6IkFTIiwidGlkIjoiZWRmNmY2NjAtNzMxOS00NWRiLTg1MzEtZmRiZDQ2MDQ3OTIxIiwidXRpIjoibGJxWEc5cGxFRWltdmxYNFh6QnBBQSIsInZlciI6IjEuMCIsInhtc190Y2R0IjoxNTgxNjYxOTMxfQ.mSgI4yi_AH-zEZEexx6LDx6cGPIvVkY7B4EnjKcf0vDvuU9PxB0ugzVEpt9QVAG8vIKoLY_Bb5Ic8pu5um7dPE0pLY0O-zNSI23BijOMc91wP8QD8UyhEmWPZLRAOLv8CTzHCiL9O5hlpJPVIwq3FAZgKhCrpAbdRarithxeBnb6fg7ady1Z4mfHh3WmNpK86z9DEQ1nL9QL5pmTYS27DBk9nnYjH1a4O95VUNoJU1H50rPyo95vDu2yuOYgeutJxT6Hmp9u8IP8P0MFrHsAcuv6TvojTQ8yR506nRcH797z40L2VDrjwM2MHrm8IKx0MAhyGBrQarnwAaQiUV7wPw'
@@ -113,7 +113,7 @@ Output
 ```
 
 ## Endpoints
-| Environment | Automation API Endpoint         |
-| ----------- | ------------------------------- |
+| Environment | Automation API Endpoint               |
+| ----------- | ------------------------------------- |
 | STG         | https://api.stg.techpass.suite.gov.sg |
-| PROD        | https://api.techpass.gov.sg     |
+| PROD        | https://api.techpass.suite.gov.sg     |
