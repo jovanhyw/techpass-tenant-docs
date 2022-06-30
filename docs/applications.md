@@ -42,7 +42,7 @@ TechPass AAD will validate the `redirect_uri` parameter in all authorize HTTP re
 Unchecking this field will disable ALL user sign in to the tenant service.
 
 ### User Assignment Required
-This properties determines if a user needs to be granted access before he/she is allowed to sign into your app. Leaving this field uncheck means that **ALL** TechPass users will be able to sign into your app.
+This property determines if a user needs to be granted access before he/she is allowed to sign into your app. Leaving this field unchecked means that **ALL** TechPass users will be able to sign in to your app.
 
 Careful consideration is required if you wish the alter the value of this field. Find out more about to how design your [Access Model](resources#concepts) with TechPass.
 
@@ -50,7 +50,10 @@ Unchecking user assignment would make your application accessible to anyone with
 
 !> If a user's access is **explicitly revoked** from other applications; That user will still **have access** to your application, until it expires due to inactivity.
 
-If you left this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
+If you leave this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
+### Mark As Published
+Select **Mark As Published** to publish your application on the TechPass Portal.
+If your application is in the testing phase, do not select **Mark As Published**.
 
 ### Client Secrets
 The secret key is used by tenant services to authenticate itself to TechPass AAD. Each secret key is only valid for a period of one year once created. Please plan for secret rotation.
