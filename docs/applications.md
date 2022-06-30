@@ -39,17 +39,18 @@ TechPass AAD will validate the `redirect_uri` parameter in all authorize HTTP re
 ?> For more information, visit [Redirect URI(reply URL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url) and [Restrictions on wildcards in redirect URIs](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url#restrictions-on-wildcards-in-redirect-uris).
 
 ### Enable Sign In
-If you clear the selection, it will disable ALL user sign in to the tenant service.
+Unchecking this field will disable ALL user sign in to the tenant service.
 
 ### User Assignment Required
-Select **User Assignment Required** to grant application access for a subset of users. If you do not select **User Assignment Required**, all users with an active TechPass account will be able to sign in to the app.
+This property determines if a user needs to be granted access before he/she is allowed to sign into your app. Leaving this field unchecked means that **ALL** TechPass users will be able to sign in to your app.
 
 Careful consideration is required if you wish the alter the value of this field. Find out more about to how design your [Access Model](resources#concepts) with TechPass.
 
+Unchecking user assignment would make your application accessible to anyone with a TechPass account.
+
 !> If a user's access is **explicitly revoked** from other applications; That user will still **have access** to your application, until it expires due to inactivity.
 
-If you left this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
-
+If you leave this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
 ### Mark As Published
 Select **Mark As Published** to publish your application on the TechPass Portal.
 If your application is in the testing phase, do not select **Mark As Published**.
