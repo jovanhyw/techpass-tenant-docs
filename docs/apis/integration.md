@@ -160,9 +160,9 @@ Upon receiving the access token, you should check for 2 things:
     const decodedToken = (decodedValidToken(authorizationHeader.replace('Bearer ','')) as any);
   ```
 
-  The token signature is considered valid if no errors were thrown and you got a token back.
+  The token signature is considered valid if no errors are thrown and you get a token back.
 
-  If errors were thrown, you can check for specific issues with the validation process, as documented in the jsonwebtoken NPM package: [Errors & Codes](https://github.com/auth0/node-jsonwebtoken#errors--codes)
+  If errors are thrown, you can check for specific issues with the validation process, as documented in the jsonwebtoken NPM package: [Errors & Codes](https://github.com/auth0/node-jsonwebtoken#errors--codes)
 
 * **'aud' claim**  
   Check that the **aud** claim of the decoded token points to [Automation API Endpoint](#Endpoints)
