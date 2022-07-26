@@ -2,4 +2,5 @@
 - [OAuth2.0 & Identity Provider](/concepts/oauth2)
 - [Authorization Code Grant](/concepts/authcodegrant)
 - [Client Credentials Grant](/concepts/clientcred)
+- [Transition in Automation API Access Token](/concepts/transition-guide)
 - [Role Based Access Control](/concepts/rbac)
