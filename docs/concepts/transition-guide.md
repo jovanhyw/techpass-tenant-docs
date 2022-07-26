@@ -2,12 +2,12 @@
 
 **Date Announced**
 
-Staging: 20 July 2022
+Staging: 20 July 2022  
 Production: 27 July 2022
 
 **Effective Date**
 
-Staging: 20 July 2022
+Staging: 20 July 2022  
 Production: 27 July 2022
 
 **Change behaviour**
