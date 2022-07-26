@@ -1,22 +1,17 @@
-# Welcome to TechPass User Documentation!
-![banner](assets/images/banner.png)
-
-!> TechPass is currently in active development. The information within this documentation will change without notice and may not up-to-date.
-
-## What is TechPass
-TechPass is an Identity & Access Management (IAM) and Single Sign On (SSO) Solution for services within the Singapore Government Technology Stack (SGTS).
-It is built to provide users with a seamless login experience across SG TechStack services and allow access control to be managed easily from a centralised location.
+# Overview of TechPass
+## What is TechPass?
+TechPass is the Identity & Access Management (IAM) and Single Sign-on (SSO) solution to access Singapore Government Technology Stack (SGTS) services. It provides a seamless login experience across SGTS services and allows centralised user access control.
 
 ## Key Concepts
-TechPass is powered by [Microsoft Azure AD service](https://azure.microsoft.com/en-us/services/active-directory/).
-It builds on top of Azure AD to cater to the specific requirements of the public service's development environment.
-TechPass empowers engineering teams working on SGTS products to develop and rollout their services quickly by simplifying the amount of work needed to implement a new service.
 
-TechPass utilises popular open standards such as, [OAuth 2.0](https://oauth.net/2/) / [OIDC](https://openid.net/connect/) (OpenID Connect)
-and [SAML 2.0](http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html) (Security Assertion Markup Language),
-for authentication and authorization.
+TechPass is powered by [Microsoft Azure AD service](https://azure.microsoft.com/en-us/services/active-directory/). It is built on top of Azure AD to meet specific requirements of public service's development environment.
 
-OAuth 2.0 setup service is available on TechPass while SAML service is available only by invitation.
-Please reach to us if you need SAML support for your product and services.
+TechPass allows engineering teams working on SGTS products to develop and roll out their services quickly by simplifying the process needed to implement a new service.
+
+TechPass utilises popular open standards such as [OAuth 2.0](https://oauth.net/2/) / [OpenID Connect(OIDC)](https://openid.net/connect/)
+and [Security Assertion Markup Language(SAML) 2.0](http://docs.oasis-open.org/security/saml/Post2.0/sstc-saml-tech-overview-2.0.html), for authentication and authorisation.
+
+?> While OAuth 2.0 SSO setup is available on the [TechPass portal](https://portal.techpass.gov.sg), SAML SSO is available only by request. If you need SAML support for your product and services, submit a [service request](https://go.gov.sg/techpass-sr). We will get back to you within three business days.
+
 
 Continue reading [here](/concepts/oauth2.md) for a deep dive into OAuth 2.0 setup.

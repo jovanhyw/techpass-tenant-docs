@@ -30,7 +30,7 @@ The OTPaaS requires your service to make authorize calls by using your API Key. 
 
 ### Sequence Diagram
 The sequence diagram below illustrates a typical use-case for the OTPaaS.
-![otpaas_seqdiag](./assets/images/otpaas/otpaas_seqdiag.png)
+![otpaas_seqdiag](./assets/otpaas_seqdiag.png)
 
 ### Splitting the OTP input
 Take note that the user will be receiving their OTP in the form of `id-pin` e.g. `cAfpFbxX-740767`.
@@ -49,19 +49,20 @@ The first endpoint generates an OTP to the end user and sends it to their email.
 The second endpoint verifies the OTP against the ID of the OTP request.
 
 ### Generating your API Key
-The API requests require the Authorization Bearer header together with the valid token to allow a successful call. The token is a base64 encoded string hash of the `appId` and the HMAC-SHA256 hash `secret`.
+The API requests require the Authorization Bearer header together with the valid token to allow a successful call. The token is a base64 encoded string hash of the `namespace`, `appId` and the HMAC-SHA256 hash `secret`.
 
-You may use the following Node.js code to compute your API Key. Replace your `appId` and `secret` in the appropriate const below.
+You may use the following Node.js code to compute your API Key. Replace your `namespace`, `appId` and `secret` in the appropriate const below.
 
 ```javascript
 const crypto = require('crypto');
+const app_namespace = "";
 const app_id = "";
 const app_secret = "";
 
 const secret = crypto.createHmac('sha256', app_secret)
                     .update(app_id)
                     .digest('hex');
-const token = Buffer.from(`${app_id}:${secret}`).toString('base64');
+const token = Buffer.from(`${app_namespace}:${app_id}:${secret}`).toString('base64');
 
 const auth_string = `Bearer ${token}`;
 

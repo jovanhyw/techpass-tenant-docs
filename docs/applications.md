@@ -13,7 +13,7 @@ The ID of the App. This is used to identify your tenant service to TechPass AAD 
 The directory ID of TechPass AAD tenant with Microsoft's Azure AD SaaS. This allows the authentication endpoints to identify that the requests should be directed to TechPass AAD.
 
 ### Common Endpoints
-This drawer popup contains the URLs for needed for using the Auth Code grant and Implicit Grant flows. Remember to replace the values in square brackets.
+This drawer popup contains the URLs needed for using the Authorization Code and Client Credentials grant flows. Remember to replace the values in square brackets.
 
 ### Owners
 A list of users that are has the permission to make changes to the Client App properties, which should typically be the administrators of the Tenant Namespace.
@@ -42,7 +42,7 @@ TechPass AAD will validate the `redirect_uri` parameter in all authorize HTTP re
 Unchecking this field will disable ALL user sign in to the tenant service.
 
 ### User Assignment Required
-This properties determines if a user needs to be granted access before he/she is allowed to sign into your app. Leaving this field uncheck means that **ALL** TechPass users will be able to sign into your app.
+This property determines if a user needs to be granted access before he/she is allowed to sign into your app. Leaving this field unchecked means that **ALL** TechPass users will be able to sign in to your app.
 
 Careful consideration is required if you wish the alter the value of this field. Find out more about to how design your [Access Model](resources#concepts) with TechPass.
 
@@ -50,19 +50,17 @@ Unchecking user assignment would make your application accessible to anyone with
 
 !> If a user's access is **explicitly revoked** from other applications; That user will still **have access** to your application, until it expires due to inactivity.
 
-If you left this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
-
-### Implicit Grant
-Implicit grant is less secure than other grant flows and disabled by default.
-
-To enable implicit grant, check the corresponding boxes to allow an Access Token or ID Token or both to be issued in an implicit grant flow.
-
-!> If you do not use implicit grant, please keep the boxes unchecked.
-
-?> More information regarding Implicit Grant is available [here](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow).
+If you leave this field checked, you will need to grant access to users that you want to allow into your app. See [Assigning Access to your App](#assigning-access-to-your-app) for more info.
+### Mark As Published
+Select **Mark As Published** to publish your application on the TechPass Portal.
+If your application is in the testing phase, do not select **Mark As Published**.
 
 ### Client Secrets
-The secret key is used by tenant services to authenticate itself to TechPass AAD. Each secret key is only valid for a period of one year once created.
+The secret key is used by tenant services to authenticate itself to TechPass AAD. Each secret key is only valid for a period of one year once created. Please plan for secret rotation.
+
+### Client Certificates
+The certificate is used by tenant services to authenticate itself to TechPass AAD via client credentials grant flow. 
+This is the preferred method recommended by CSG to establish a connection from an application to TechPass AAD. They also recommend a 1-Year maximum certificate validity. So you need to plan for certificate rotation.
 
 ### Assigned Users and Groups
 A list of users and/or user groups that has been granted permission to sign in to your tenant service. If you add a user group, ALL users within that group will be granted permission.
@@ -78,6 +76,9 @@ However, do take note that this **does not** apply to nested group(s). Only dire
 ![create_app](assets/images/application/app_create.png)
 
 ?> For more information, visit [Redirect URI(reply URL)](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url) and [Restrictions on wildcards in redirect URIs](https://docs.microsoft.com/en-us/azure/active-directory/develop/reply-url#restrictions-on-wildcards-in-redirect-uris).
+
+There are some default permissions that are assigned to an application upon creation. A request for consent to TechPass cloudops team will be generated automatically. There are no actions required by you at this point. However, you may encounter a sign in error if such consent is not provided. visit [here](/resources.md?id=need-admin-consent) for more info.
+
 
 ## Updating an App
 ?> It may take some time (5-15 seconds) for the changes made on application to take effect. Please wait before reloading.

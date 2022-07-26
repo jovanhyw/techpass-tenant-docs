@@ -14,7 +14,7 @@ For the Tenant's Automation Application to make the Automation API requests, two
 
 ### Access Token
 1. The access token encapsulates the requester's security identity and should be used as the bearer token for all HTTPS requests made to the Automation API endpoint. This will authorise the request to allow operations based on the tenant's namespace.
-2. There's 2 ways to request for an access token:
+2. There are 2 ways to request for an access token:
     * Use Client Assertion (certificates) – this is the recommended approach
     * Use Client Secret
 
@@ -22,12 +22,13 @@ For the Tenant's Automation Application to make the Automation API requests, two
 ### Request for Access Token Using Client Assertion
 1. The OAuth 2.0 token endpoint (v2) is **POST** https://login.microsoftonline.com/{DirectoryID}/oauth2/v2.0/token.
     * For **Directory ID**, please refer to the [How To Get The Directory/Tenant ID](/apis/tenant-id.md).
-2. The request payload for the token endpoint requires the **client_id**, **client_assertion** and **client_assertion_type**.
+2. The request payload for the token endpoint requires the **client_id**, **client_assertion**, **client_assertion_type** and **scope**.
     * For **client_id**, please refer to the [How To Get The Application/Client ID](/apis/client-id.md).
     * For **client_assertion**, please refer to the following documentations:
         * [Microsoft identity platform application authentication certificate credentials](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials)
         * [Microsoft identity platform and the OAuth 2.0 client credentials flow (Second case: Access token request with a certificate)](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#second-case-access-token-request-with-a-certificate)
-        * For client_assertion_type, use ```urn:ietf:params:oauth-client-assertion-type:jwt-bearer```
+        * For **client_assertion_type**, use ```urn:ietf:params:oauth-client-assertion-type:jwt-bearer```
+        * For **scope**, it should be `{automation_api_endpoint}/.default`. Refer to [Endpoints](#Endpoints) for the Automation API Endpoints.
 3. Once you've retrieved a **valid access token**, use it as the **bearer token** for succeeding Automation API requests.
 
 ### Command
@@ -36,7 +37,7 @@ For the Tenant's Automation Application to make the Automation API requests, two
 curl -X POST 'https://login.microsoftonline.com/edf6f660-7319-45db-8531-fdbd46047921/oauth2/v2.0/token' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'client_id=51d7fe82-f122-4651-a4fd-262c2b2df967&grant_type=client_credentials&client_assertion=eyJhbGciOiJFUzI1NiJ9.ewogICJqdGkiOiJteUpXVElkMDAxIiwKICAic3ViIjoiMzgxNzQ2MjM3NjIiLAogICJpc3MiOiIzODE3NDYyMzc2MiIsCiAgImF1ZCI6Imh0dHA6Ly9sb2NhbG
- hvc3Q6NDAwMC9hcGkvYXV0aC90b2tlbi9kaXJlY3QvMjQ1MjMxMzgyMDUiLAogICJleHAiOjE1MzYxNjU1NDAsCiAgImlhdCI6MTUzNjEzMjcwOAp9Cg.YB4gdhWUGRjWEsEbKDs7-G2WFH2oYz7bAEP5AtegHXInkY9ncA2V3IoA6O_HVQuFxyCRIklrxsMk32MfNF_ABA&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&scope=https://graph.microsoft.com/.default'
+ hvc3Q6NDAwMC9hcGkvYXV0aC90b2tlbi9kaXJlY3QvMjQ1MjMxMzgyMDUiLAogICJleHAiOjE1MzYxNjU1NDAsCiAgImlhdCI6MTUzNjEzMjcwOAp9Cg.YB4gdhWUGRjWEsEbKDs7-G2WFH2oYz7bAEP5AtegHXInkY9ncA2V3IoA6O_HVQuFxyCRIklrxsMk32MfNF_ABA&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer&scope=https://api.stg.techpass.suite.gov.sg/.default'
 ```
 
 ### Output
@@ -52,16 +53,17 @@ curl -X POST 'https://login.microsoftonline.com/edf6f660-7319-45db-8531-fdbd4604
 ### Request for Access Token Using Client Secret
 1. The OAuth 2.0 token endpoint (v2) is **POST** https://login.microsoftonline.com/{DirectoryID}/oauth2/v2.0/token.
     * For **Directory ID**, please refer to the [How To Get The Directory/Tenant ID](/apis/tenant-id.md).
-2. The request payload for the token endpoint requires the **client_id** and **client_secret**.
+2. The request payload for the token endpoint requires the **client_id**, **client_secret** and **scope**.
     * For **client_id**, please refer to the [How To Get The Application/Client ID](/apis/client-id.md).
     * For **client_secret**, please refer to the [How To Get The Client Secret](/apis/client-secret.md).
+    * For **scope**, it should be `{automation_api_endpoint}/.default`. Refer to [Endpoints](#Endpoints) for the Automation API Endpoints.
 3. Once you've retrieved a **valid access token**, use it as the **bearer token** for succeeding Automation API requests.
 
 ### Command
 ```
 curl -X POST 'https://login.microsoftonline.com/edf6f660-7319-45db-8531-fdbd46047921/oauth2/v2.0/token' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
-  -d 'client_id=51d7fe82-f122-4651-a4fd-262c2b2df967&grant_type=client_credentials&client_secret=R57BtGiDY71hIa~J~-5foTtwx-~1a5et~W&scope=https://graph.microsoft.com/.default'
+  -d 'client_id=51d7fe82-f122-4651-a4fd-262c2b2df967&grant_type=client_credentials&client_secret=R57BtGiDY71hIa~J~-5foTtwx-~1a5et~W&scope=https://api.stg.techpass.suite.gov.sg/.default'
 ```
 
 ### Output
@@ -111,7 +113,59 @@ Output
   ]
 }
 ```
+## Change In Access Token Scope
+We will be implementing a change to the **scope** parameter in the request for access token. You are required to change the **scope** parameter value from `https://graph.microsoft.com/.default` to `{automation_api_endpoint}/.default` (refer to [Endpoints](#Endpoints) for the Automation API Endpoints). 
 
+To ease the transition, this change will be backward compatible (i.e. we will continue to accept access token with **scope** value of `https://graph.microsoft.com/.default`) for **2 months** from the Change Effective Date. This will become a breaking change after that period, where only `{automation_api_endpoint}/.default` will be accepted.
+
+| Environment | Change Effective Date | Backward Compatible Until |
+| ----------- | ----------------------|---------------------------|
+| STG         | 20 Jul 2022           | 20 Sep 2022               |
+| PROD        | TBA                   | TBA                       |
+
+Refer to [Example cURL Usage](#example-curl-usage) on how to specify the **scope** in your request for access token.
+
+## Validating Access Token
+This is only applicable for the new [change](#Change-In-Access-Token-Scope) in **scope** parameter.
+
+Upon receiving the access token, you should check for 2 things:
+* **token signature**
+
+  1. parse the JWT access token and make note of the **kid** value. The algorithm in used is **RS256**
+      ```
+      {
+        "typ": "JWT",
+        "alg": "RS256",
+        "kid": "GvnPApfWMdLRi8PDmisFn7bprKg"
+      }
+      ```
+
+  2. Make a GET call to https://login.microsoftonline.com/{DirectoryID}/discovery/v2.0/keys. 
+      * For **Directory ID**, please refer to the [How To Get The Directory/Tenant ID](/apis/tenant-id.md).  
+  
+  3. Parse the results returned from **/keys** endpoint and find the record matching **kid** value. Extract the **x5c** value then enclose the string in the BEGIN CERTIFICATE / END CERTIFICATE block. This will form the public key used to verify the signature. For instance, using the NPM package [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken), you can do it like this:
+  ```
+    import jwt = require('jsonwebtoken');
+
+    const x5c= getX5CValue() // refer step 1-3 above
+    
+    const decodedValidToken = (accessToken: string, x5c: string) => {
+      const key: string = `-----BEGIN CERTIFICATE-----\n${x5c}\n-----END CERTIFICATE-----`;
+
+      // decode & verify token
+      return jwt.verify(accessToken, key);
+    }
+
+    const authorizationHeader: string = req.headers.authorization;
+    const decodedToken = (decodedValidToken(authorizationHeader.replace('Bearer ','')) as any);
+  ```
+
+  The token signature is considered valid if no errors are thrown and you get a token back.
+
+  If errors are thrown, you can check for specific issues with the validation process, as documented in the jsonwebtoken NPM package: [Errors & Codes](https://github.com/auth0/node-jsonwebtoken#errors--codes)
+
+* **'aud' claim**  
+  Check that the **aud** claim of the decoded token points to [Automation API Endpoint](#Endpoints)
 ## Endpoints
 | Environment | Automation API Endpoint         |
 | ----------- | ------------------------------- |
