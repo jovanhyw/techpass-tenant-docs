@@ -2,19 +2,21 @@
 
 **Date Announced**
 
-27 July 2022
+Staging: 20 July 2022
+Production: 27 July 2022
 
 **Effective Date**
 
-27 July 2022
+Staging: 20 July 2022
+Production: 27 July 2022
 
 **Change behaviour**
 
-This change is backward compatible for two months from 27 July 2022. Later, we will update you with the date when this change becomes a non-breaking change.
+This change is backward compatible for two months from the Date Announced. We will remind you again when it gets closer to the date of when the breaking change takes effect.
 
 **Details**
 
-There is a new change to the `scope` parameter in the request for access token via client credentials grant. You are required to change the `scope` parameter value from `https://graph.microsoft.com/.default` to `https://api.techpass.gov.sg/.default`
+There is a new change to the `scope` parameter in the request for access token via client credentials grant. You are required to change the `scope` parameter value from `https://graph.microsoft.com/.default` to `https://{automation_api_endpoint}/.default`
 
 **Why was this changed?**
 
@@ -28,13 +30,15 @@ The new change would not only allow us to validate the **signature** of the toke
 
 **Action required**
 
-Change the `scope` parameter value from `https://graph.microsoft.com/.default` to `https://api.techpass.gov.sg/.default` in the request for access token via client credentials grant.
+Change the `scope` parameter value from `https://graph.microsoft.com/.default` to `https://{automation_api_endpoint}/.default` in the request for access token via client credentials grant.
 
-This change returns `https://api.techpass.gov.sg` as the **aud** claim of the access token. Your API has to validate this **aud** value and also the **signature** of the access token. For more information, refer to [Validating Access Token](https://stg.docs.developer.tech.gov.sg/docs/techpass-tenant-guide/#/apis/integration?id=validating-access-token).
+This change returns `https://{automation_api_endpoint}` as the **aud** claim of the access token. Your API has to validate this **aud** value and also the **signature** of the access token. For more information, refer to [Validating Access Token](https://stg.docs.developer.tech.gov.sg/docs/techpass-tenant-guide/#/apis/integration?id=validating-access-token).
 
 
 **How does this impact tenant applications?**
 
-This change will be backward compatible(non-breaking change) for two months from 27th July 2022. We will update you later when it nears the end of the backward compatibility. When it becomes a non-backward compatible (breaking change) only `https://api.techpass.gov.sg/.default` will be accepted.
+This change will be backward compatible(non-breaking change) for two months from 27th July 2022. We will update you later when it nears the end of the backward compatibility. When it becomes a non-backward compatible (breaking change) only `https://{automation_api_endpoint}/.default` will be accepted.
 
-After two months, if the access token **aud** claim does not point to `https://api.techpass.gov.sg`, tenant applications making calls to TechPass Automation API will receive an error.
+After two months, if the access token **aud** claim does not point to `https://{automation_api_endpoint}`, tenant applications making calls to TechPass Automation API will receive an error.
+
+?> Refer to the [Endpoints](/apis/integration?id=endpoints) section to view the staging and production Automation API endpoints.
