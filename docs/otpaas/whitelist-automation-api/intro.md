@@ -13,7 +13,7 @@ For the specification document for OTP Whitelist Automation APIs, please refer t
 ## Endpoints
 The table below shows the API endpoints for staging and production environments respectively.
 
-| Environment | Automation API Endpoint               |
-| ----------- | ------------------------------------- |
-| STG         | https://api.stg.techpass.suite.gov.sg |
-| PROD        | https://api.techpass.gov.sg           |
+| Environment | Automation API Endpoint       |
+| ----------- | ----------------------------- |
+| STG         | api.stg.techpass.suite.gov.sg |
+| PROD        | api.techpass.gov.sg           |

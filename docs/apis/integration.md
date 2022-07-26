@@ -114,14 +114,14 @@ Output
 }
 ```
 ## Change In Access Token Scope
-We will be implementing a change to the **scope** parameter in the request for access token. You are required to change the **scope** parameter value from `https://graph.microsoft.com/.default` to `{automation_api_endpoint}/.default` (refer to [Endpoints](#Endpoints) for the Automation API Endpoints). 
+We will be implementing a change to the **scope** parameter in the request for access token. You are required to change the **scope** parameter value from `https://graph.microsoft.com/.default` to `https://{automation_api_endpoint}/.default` (refer to [Endpoints](#Endpoints) for the Automation API Endpoints). 
 
-To ease the transition, this change will be backward compatible (i.e. we will continue to accept access token with **scope** value of `https://graph.microsoft.com/.default`) for **2 months** from the Change Effective Date. This will become a breaking change after that period, where only `{automation_api_endpoint}/.default` will be accepted.
+To ease the transition, this change will be backward compatible (i.e. we will continue to accept access token with **scope** value of `https://graph.microsoft.com/.default`) for **2 months** from the Change Effective Date. This will become a breaking change after that period, where only `https://{automation_api_endpoint}/.default` will be accepted.
 
 | Environment | Change Effective Date | Backward Compatible Until |
 | ----------- | ----------------------|---------------------------|
 | STG         | 20 Jul 2022           | 20 Sep 2022               |
-| PROD        | TBA                   | TBA                       |
+| PROD        | 27 Jul 2022           | 27 Sep 2022               |
 
 Refer to [Example cURL Usage](#example-curl-usage) on how to specify the **scope** in your request for access token.
 
@@ -167,7 +167,7 @@ Upon receiving the access token, you should check for 2 things:
 * **'aud' claim**  
   Check that the **aud** claim of the decoded token points to [Automation API Endpoint](#Endpoints)
 ## Endpoints
-| Environment | Automation API Endpoint         |
-| ----------- | ------------------------------- |
-| STG         | https://api.stg.techpass.suite.gov.sg |
-| PROD        | https://api.techpass.gov.sg     |
+| Environment | Automation API Endpoint       |
+| ----------- | ------------------------------|
+| STG         | api.stg.techpass.suite.gov.sg |
+| PROD        | api.techpass.gov.sg           |
