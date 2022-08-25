@@ -44,7 +44,7 @@ Click Submit and Confirm to proceed the creation of the application. It may take
 1. Make sure you have logged in to [TechPass portal](http://portal.techpass.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant accounts.
 2. Locate the tenant account and click **Manage**.
 3. Choose **Applications** from the side menu.
-4. Locate the application for which you need to upload a new client secret and click the corresponding **Edit** icon edit-icon.
+4. Locate the application for which you need to create a new client secret and click the corresponding **Edit** icon edit-icon.
 
 <kbd>![choose-application-edit](assets/concept-authcodegrant/choose-application-edit.png)</kbd>
 
@@ -57,10 +57,10 @@ The **Edit Application** page is displayed.
 You will see a success message confirming the addition of new secret and the add secret will be listed on this page.
 
 <kbd>![secret-list](assets/concept-authcodegrant/secret-list.png)</kbd>
-7. Copy the **Value** of the secret and securedly store it.
+7. Copy the **Value** of the secret and securely store it.
 
 > **Note**:
->- The **Value** will be encrypted when this page gets refreshed. Hence, make sure to copy and store it securedly.
+>- The **Value** will be encrypted when this page gets refreshed. Hence, make sure to copy and store it securely.
 >- Since Secrets have a validity period of one year, you need to have a plan for rollover.
 >- To delete a secret, click the delete icon corresponding to it. You will be prompted to confirm before deletion.
 
