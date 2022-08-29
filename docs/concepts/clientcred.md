@@ -113,13 +113,13 @@ ERROR RESPONSE
 **Note:**  
 remember to store the Access ([more info](https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens)) json tokens securely in the backend. !!! Never return these tokens to the frontend. It's considered bad practice.
 
-Access token - use this token as Authorization bearer token with TechPass Automation APIs. This is a short live token of (5-15 mins). Application Access token will inherit the default permissions assigned to the application. (These permissions are defined by TechPass; You are not permitted to alter this. If you have any special requirements, please contact TechPass)
+Access token - use this token as Authorisation bearer token with TechPass Automation APIs. This is a short live token of (5-15 mins). Application Access token will inherit the default permissions assigned to the application. (These permissions are defined by TechPass; You are not permitted to alter this. If you have any special requirements, please contact TechPass)
 
 Client Credentials Grant flow with secret is considered completed at this point.
 
 ## Establish client credentials grant flow with certificate
 ### Prerequisites
-A public certificate and private key. Get a certificate issued by CoreSG (WOG CA - to be confirmed at a later time) or public CA. For example, let's encrypt or AWS certificate manager)
+A public certificate and private key. Get a certificate issued by CoreSG or public CA. For example, *Let's Encrypt* or *AWS certificate manager*.
 
 > **Note**:
 >- Self-signed certificates are not permitted.
@@ -174,7 +174,7 @@ As a best practice, tenant admins can delete a certificate that is not in use or
 1. Open the tenant namespace and go to the **Edit Application** page.
 2. Go to **Certificates** section to view the list of certificates.
 3. Click the Delete icon corresponding to the certificate.
-4.  When prompted, click **Confirm**.
+4. When prompted, click **Confirm**.
 
 A success message confirms the deletion.
 

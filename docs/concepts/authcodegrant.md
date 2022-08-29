@@ -44,7 +44,8 @@ Click Submit and Confirm to proceed the creation of the application. It may take
 1. Make sure you have logged in to [TechPass portal](http://portal.techpass.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant namespaces.
 2. Locate the tenant namespace and click **Manage**.
 3. Choose **Applications** from the side menu.
-4. Locate the application for which you need to create a new client secret and click the corresponding **Edit** icon.
+4. Locate the application for which you need to create a new client secret and click the corresponding **Edit** icon ![edit-icon](assets/concept-clientcred/edit-icon.png).
+
 
 <kbd>![choose-application-edit](assets/concept-authcodegrant/choose-application-edit.png)</kbd>
 
