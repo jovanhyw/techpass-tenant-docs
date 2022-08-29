@@ -145,10 +145,14 @@ The **Edit Application** page is displayed.
 
 <kbd>![upload-cert](assets/concept-clientcred/upload-certificates.png)</kbd>
 
-6. Open the new certficate in a text editor, copy the contents from **-----BEGIN CERTIFICATE-----** (including the BEGIN CERTIFICATE and END CERTIFICATE) and paste it into the **Upload Certificate**.
+6. Open the new certificate in a text editor, copy the required content and paste into the **Upload Certificate** .
 
-> **Note**:
-> Do not paste the **Private key** content.
+<div class="tip">
+<ul>
+<li> Do not copy the <strong>Private key</strong> content.</li>
+<li>Copy and paste the content from <strong>-----BEGIN CERTIFICATE-----</strong> (including the <strong>BEGIN CERTIFICATE</strong> and <strong>END CERTIFICATE</strong>).</li>
+</ul></div>
+
 
 7. Click **Upload**.
 
