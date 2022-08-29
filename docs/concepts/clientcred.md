@@ -119,7 +119,7 @@ Client Credentials Grant flow with secret is considered completed at this point.
 
 ## Establish client credentials grant flow with certificate
 ### Prerequisites
-A public certificate and private key. Get a certificate issued by CoreSG or public CA.
+A public certificate and private key. Get a certificate issued by CoreSG or public CA. For example, *Let's Encrypt* or *AWS certificate manager*.
 
 > **Note**:
 >- Self-signed certificates are not permitted.
