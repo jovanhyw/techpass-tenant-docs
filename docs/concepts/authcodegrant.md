@@ -5,10 +5,10 @@ This guide will provide the streamlined instructions to application setup and en
 * integrate with TechPass, so that your users can sign into your application (usually a web application with browser) with a TechPass account
 * using TechPass to **authenticate** the user, establish a session and using the return ID & Access token to **authorise** your users with the right permissions to access your application.
 
-### Pre-requisites
-* is a Tenant Admin of a TechPass Tenant
-* have a basic understanding of OAuth 2.0's Auth Code Flow with Proof Key for Code Exchange (PKCE), see: [Identity Provider and OAuth2 in TechPass](/concepts/oauth2.md)
-* your application portal design have a Frontend and Backend infrastructure setup
+### Prerequisites
+* You should be a Tenant Admin of a TechPass Tenant.
+* Basic understanding of OAuth 2.0's Auth Code Flow with Proof Key for Code Exchange (PKCE). For more information, refer to [Identity Provider and OAuth2 in TechPass](oauth2).
+* Your application portal design should have a Frontend and Backend infrastructure setup.
 
 ## [1] Create an application
 Assuming you are already familiar with OAuth 2.0's Auth Code Flow with Proof Key for Code Exchange (PKCE); An application in TechPass what you will use to manage the configurations required by your portal to establish the various OAuth grant flows, coarse and fine grant control of your users, groups and service roles*.
@@ -17,7 +17,7 @@ Assuming you are already familiar with OAuth 2.0's Auth Code Flow with Proof Key
 
 Managing of applications is only possible if you are a tenant admin of your tenant.
 
-So please switch your role to **TENANT** after your sign into TechPass. (Refer [here](/roles.md) on how to switch role)
+So please switch your role to **TENANT** after your sign into TechPass. (Refer [here](/docs/roles.md) on how to switch role)
 
 Next, select the tenant you like to create the application, then click on Applications on the navigation side bar
 
@@ -40,10 +40,36 @@ Click Submit and Confirm to proceed the creation of the application. It may take
 
 ![updated_app_overview](assets/concept-authcodegrant/04-applicationsoverview.png)
 
-?> There are some default permissions that are assigned to an application upon creation. A request for consent to TechPass cloudops team will be generated automatically. There are no actions required by you at this point. However, you may encounter a sign in error if such consent is not provided. visit [here](/resources.md?id=need-admin-consent) for more info.
-
 ## [2] Create secret
-Click on the pencil icon next to the application you wish to edit.
+1. Make sure you have logged in to [TechPass portal](http://portal.techpass.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant namespaces.
+2. Locate the tenant namespace and click **Manage**.
+3. Choose **Applications** from the side menu.
+4. Locate the application for which you need to create a new client secret and click the corresponding **Edit** icon ![edit-icon](assets/concept-clientcred/edit-icon.png).
+
+
+<kbd>![choose-application-edit](assets/concept-authcodegrant/choose-application-edit.png)</kbd>
+
+The **Edit Application** page is displayed.
+
+5. Go to the **Client Secrets** section and click **Add client secret**. The **New Client Secret** pop-up is displayed.
+6. Provide a **Description** for this secret and click **Add**.
+<kbd>![add-secret](assets/concept-authcodegrant/add-secret.png)</kbd>
+
+You will see a success message confirming the addition of new secret and the add secret will be listed on this page.
+
+<kbd>![secret-list](assets/concept-authcodegrant/secret-list.png)</kbd>
+7. Copy the **Value** of the secret and securely store it.
+
+> **Note**:
+>- The **Value** will be encrypted when this page gets refreshed. Hence, make sure to copy and store it securely.
+>- Since Secrets have a validity period of one year, you need to have a plan for rollover.
+>- To delete a secret, click the delete icon corresponding to it. You will be prompted to confirm before deletion.
+
+
+
+<!--
+.
+1. Click on the pencil icon next to the application you wish to edit.
 
 ![updated_app_overview](assets/concept-authcodegrant/04-applicationsoverview.png)
 
@@ -61,7 +87,7 @@ Make sure you copy and securely store the generated secret. use some key vaults 
 
 Note: Secret will be hidden the next time you return to this page.
 
-![hidden_secret](assets/concept-authcodegrant/08-secrethidden.png)
+![hidden_secret](assets/concept-authcodegrant/08-secrethidden.png)-->
 
 ## [3] Gather the endpoints and configurations required for your portal
 You should see Application ID and Directory ID from the properties section of your application. Please make a note of these values.
@@ -90,10 +116,10 @@ https://login.microsoftonline.com/edf6f660-7319-45db-8531-fdbd46047921/oauth2/v2
 1. Check that the directory id and client id matches the values found in the properties of your application
 2. Replace [replace_with_1_of_redirect_uri_entries] with 1 of the redirect url entered during application creation. value needs to be URL encoded
 3. Generate random value for state.
-   
+
     **state** is a value included in the request that will also be returned in the token response. It can be a string of any content that you wish. A randomly generated unique value is typically used for preventing cross-site request forgery attacks. The value can also encode information about the user's state in the app before the authentication request occurred, such as the page or view they were on. reference: https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow
 
-    It can be any string but you can consider using uuid version 4 generators, then you will need to store this value in memory (state/local session storage) and replace [replace_with_random_value_generated_from_your_frontend] with this value. 
+    It can be any string but you can consider using uuid version 4 generators, then you will need to store this value in memory (state/local session storage) and replace [replace_with_random_value_generated_from_your_frontend] with this value.
 
     **Note:** state is a one time use value, you are going to need to generate a new random state for every login (/authorize) call to microsoft
 4. Generate code challenge
@@ -107,7 +133,7 @@ https://login.microsoftonline.com/edf6f660-7319-45db-8531-fdbd46047921/oauth2/v2
     ```code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))```
 
     Then replace [replace_with_code_challenge] with the generate code challenge
-   
+
 
 Download TechPass logo in white: [![techpass.svg](assets/techpass.svg)]
 ```
@@ -264,7 +290,7 @@ Here's what you need to do upon receiving the ID token in your backend
       if !ok {
          return ""
       }
-   
+
       s := "-----BEGIN CERTIFICATE-----\n"
       s += strings.Join(chunkString(d[0].(string), 64), "\n")
       s += "\n-----END CERTIFICATE-----\n"
@@ -287,30 +313,30 @@ Here's what you need to do upon receiving the ID token in your backend
         if err != nil {
             return nil, err
         }
- 
+
         var rsaPub *rsa.PublicKey
         var data map[string]interface{}
- 
+
         b, _ := jwkPub.MarshalJSON()
         err = json.Unmarshal(b, &data)
         if err != nil {
             return nil, err
         }
- 
+
         certStr := p.getCert(data)
         if certStr != "" {
             rsaPub, err = jwtGo.ParseRSAPublicKeyFromPEM([]byte(certStr))
         } else {
             rsaPub, err = jwk.ToRSAPublic(jwkPub)
         }
- 
+
         if err != nil {
             return nil, err
         }
- 
+
         return rsaPub, nil
       }
- 
+
       var token *jwtGo.Token
       var err error
       if claims != nil {
@@ -318,7 +344,7 @@ Here's what you need to do upon receiving the ID token in your backend
       } else {
         token, err = jwtGo.Parse(jwtToken, keyFunc)
       }
- 
+
       if err != nil {
         return token, err
       }
