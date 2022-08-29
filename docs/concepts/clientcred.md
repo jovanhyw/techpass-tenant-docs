@@ -129,13 +129,13 @@ A public certificate and private key. Get a certificate issued by CoreSG (WOG CA
 
 
 ### Upload certificate
-Tenant Admin of a Tenant account can upload and manage certficates and client secrets.
+Tenant Admin of a Tenant namespace can upload and manage certificates and client secrets.
 
 **To upload a certificate**
-1. Make sure you have logged in to [TechPass portal](http://portal.techpass.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant accounts.
-2. Locate the tenant account and click **Manage**.
+1. Make sure you have logged in to [TechPass portal](http://portal.techpass.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant namespaces.
+2. Locate the tenant namespace and click **Manage**.
 3. Choose **Applications** from the side menu.
-4. Locate the application for which you need to upload a new certifcate and click the corresponding **Edit** icon ![edit-icon](assets/concept-clientcred/edit-icon.png).
+4. Locate the application for which you need to upload a new certificate and click the corresponding **Edit** icon ![edit-icon](assets/concept-clientcred/edit-icon.png).
 
 <kbd>![choose-application-edit](assets/concept-authcodegrant/choose-application-edit.png)</kbd>
 
@@ -167,13 +167,13 @@ You will see a success message confirming the upload and the uploaded certificat
 
 ### Delete certificate
 
-As a best practice, tenant admins can delete a certifcate that is not in use or expired.
+As a best practice, tenant admins can delete a certificate that is not in use or expired.
 
-**To delete a certficate**
+**To delete a certificate**
 
-1. Open the tenant account and go to the **Edit Application** page.
+1. Open the tenant namespace and go to the **Edit Application** page.
 2. Go to **Certificates** section to view the list of certificates.
-3. Click the Delete icon corresponding to the certficate.
+3. Click the Delete icon corresponding to the certificate.
 4.  When prompted, click **Confirm**.
 
 A success message confirms the deletion.
