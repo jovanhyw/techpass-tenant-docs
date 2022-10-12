@@ -1,21 +1,22 @@
 # Client Credentials Grant Flow
-This guide will provide the streamlined instructions to application setup and enabling features to support the 
+This guide will provide the streamlined instructions to application setup and enabling features to support the
 OAuth 2.0's Client Credentials Grant: https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow
 
 ### Objectives
-* establishing a connection with TechPass from your backend. System to System.
-* using TechPass to **authenticate** the system with secrets or certificate then returning Access token to access TechPass Automation APIs
+* Establish connection with TechPass from your backend. System to System.
+* Use TechPass to **authenticate** systems with secrets or certificate and then return the Access token to access TechPass Automation APIs
 
-### Pre-requisites
-* is a Tenant Admin of a TechPass Tenant
-* have a basic understanding of OAuth 2.0's Client Credentials Grant, see: [Identity Provider and OAuth2 in TechPass](oauth2)
-* your application portal design have a Frontend and Backend infrastructure setup. Although only backend can use this flow.
+### Prerequisites
+* You should be a Tenant Admin of a TechPass Tenant
+* Basic understanding of OAuth 2.0's Client Credentials Grant. For more information, refer to [Identity Provider and OAuth2 in TechPass](oauth2)
+* Your application portal design should have a Frontend and Backend infrastructure setup. However, only backend can use this flow.
 
 ## Create an application
 Refer to create an application step in [Auth Code](/concepts/authcodegrant?id=_1-create-an-application) flow if you haven't created an application.
 
 ## Establish client credentials grant flow with secret
 ### Create Secret
+
 Refer to create secret step in [Auth Code](/concepts/authcodegrant?id=_2-create-secret) flow if you haven't created a secret yet.
 
 ### Gather the endpoints and configurations required for your portal
@@ -57,7 +58,7 @@ client_id=8c7a8ca7-4de7-4343-a632-363d16cbf3b5
 # Replace {secret} with your secret!
 # Replace {tenant} with your Directory ID!
 # Replace {clientid} with your Application ID!
- 
+
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id={clientid}&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_secret={secret}&grant_type=client_credentials' 'https://login.microsoftonline.com/ {tenant}/oauth2/v2.0/token'
 ```
 
@@ -112,28 +113,83 @@ ERROR RESPONSE
 **Note:**  
 remember to store the Access ([more info](https://docs.microsoft.com/en-us/azure/active-directory/develop/access-tokens)) json tokens securely in the backend. !!! Never return these tokens to the frontend. It's considered bad practice.
 
-Access token - use this token as Authorization bearer token with TechPass Automation APIs. This is a short live token of (5-15 mins). Application Access token will inherit the default permissions assigned to the application. (These permissions are defined by TechPass; You are not permitted to alter this. If you have any special requirements, please contact TechPass)
+Access token - use this token as Authorisation bearer token with TechPass Automation APIs. This is a short live token of (5-15 mins). Application Access token will inherit the default permissions assigned to the application. (These permissions are defined by TechPass; You are not permitted to alter this. If you have any special requirements, please contact TechPass)
 
 Client Credentials Grant flow with secret is considered completed at this point.
 
 ## Establish client credentials grant flow with certificate
-### Pre-requisite
-This guide is assuming you've already have a public certificate and private key. Note: Self signed certificate are not permitted.
+### Prerequisites
+A public certificate and private key. Get a certificate issued by CoreSG or public CA. For example, *Let's Encrypt* or *AWS certificate manager*.
 
-Obtain a certificate issued by CoreSG (WOG CA - to be confirmed at a later time) or public CA (eg. let's encrypt or AWS certificate manager)
-* **Note:** CSG recommends 1 year maximum for validity period. You will need to plan for rollover
-* Keep your private key secure. Can consider using AWS Secret Manager but please be mindful of the secrets size limit (more info)
+> **Note**:
+>- Self-signed certificates are not permitted.
+>- CSG recommends to have one year validity period and plan for rollover.
+>- Keep your private key secure.
+>- You may also consider using AWS Secret Manager but please be mindful of the secrets size limit.
 
-### Upload Certificate
+
+### Upload certificate
+Tenant Admin of a Tenant namespace can upload and manage certificates and client secrets.
+
+**To upload a certificate**
+1. Make sure you have logged in to [TechPass portal](http://portal.techpass.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant namespaces.
+2. Locate the tenant namespace and click **Manage**.
+3. Choose **Applications** from the side menu.
+4. Locate the application for which you need to upload a new certificate and click the corresponding **Edit** icon ![edit-icon](assets/concept-clientcred/edit-icon.png).
+
+<kbd>![choose-application-edit](assets/concept-authcodegrant/choose-application-edit.png)</kbd>
+
+The **Edit Application** page is displayed.
+
+5. Go to **Certificates** section and click **Upload Certificate**.
+
+<kbd>![upload-cert](assets/concept-clientcred/upload-certificates.png)</kbd>
+
+6. Open the new certificate in a text editor, copy the required content and paste into the **Upload Certificate** .
+
+<div class="tip">
+<ul>
+<li> Do not copy the <strong>Private key</strong> content.</li>
+<li>Copy and paste the content from <strong>-----BEGIN CERTIFICATE-----</strong> (including the <strong>BEGIN CERTIFICATE</strong> and <strong>END CERTIFICATE</strong>).</li>
+</ul></div>
+
+
+7. Click **Upload**.
+
+<kbd>![upload-certificate](assets/concept-clientcred/upload-certificate.png)</kbd>
+
+You will see a success message confirming the upload and the uploaded certificate will be listed on this page.
+
+<kbd>![certificate-list](assets/concept-clientcred/uploaded-certificate.png)</kbd>
+
+> **Note**:
+> If you see any error message, before creating a support request, make sure that you have not pasted the private key.
+
+### Delete certificate
+
+As a best practice, tenant admins can delete a certificate that is not in use or expired.
+
+**To delete a certificate**
+
+1. Open the tenant namespace and go to the **Edit Application** page.
+2. Go to **Certificates** section to view the list of certificates.
+3. Click the Delete icon corresponding to the certificate.
+4. When prompted, click **Confirm**.
+
+A success message confirms the deletion.
+
+<!--
+
+
 Go to the edit mode of your application and scroll down to Certificates
 
-![upload_cert](assets/concept-clientcred/04-uploadcert.png)
+<kbd>![upload_cert](assets/concept-clientcred/04-uploadcert.png)</kbd>
 
 Click + Upload Certificate. (to update this segment when we support upload by file)
 
 You should see the following pop up dialog.
 
-![upload_cert_input](assets/concept-clientcred/05-uploadcertinputbox.png)
+![upload_cert_input](assets/concept-clientcred/05-uploadcertinputbox.png)-
 
 Open your public certificate in a text editor and copy all the content into File Content textbox.
 
@@ -141,7 +197,7 @@ Open your public certificate in a text editor and copy all the content into File
 
 Click Upload button. You should see a record like this once the certificate is uploaded. Take note of the Thumbprint value. It is needed for the generation of JWT assertion.
 
-![certs_overview](assets/concept-clientcred/07-certsoverview.png)
+![certs_overview](assets/concept-clientcred/07-certsoverview.png)-->
 
 ### Gather the endpoints and configurations required for your portal
 You should see Application ID and Directory ID from the properties section of your application. Please make a note of these values.
@@ -165,15 +221,15 @@ client_id=8c7a8ca7-4de7-4343-a632-363d16cbf3b5
 &grant_type=client_credentials
 
 ### Generate JWT assertion
-In order to request for an access token using client credentials flow with certificate, you will need to form a JWT assertion that is signed by the private key that is a match to the public certificate that you've just uploaded. 
+In order to request for an access token using client credentials flow with certificate, you will need to form a JWT assertion that is signed by the private key that is a match to the public certificate that you've just uploaded.
 This [article](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-certificate-credentials) describes the computation of JWT assertion in detail.
 
 #### Load the private key
 Retrieve the matching private key from your secure storage  (Eg. AWS ACM or secret manager.)  
 Find out which Public-Key Cryptography Standard is used to generate your private key - public certificate pair.  
-then using pem and x509 libraries to load your private key 
+then using pem and x509 libraries to load your private key
 
-**Load RSA Private key - Golang** 
+**Load RSA Private key - Golang**
 ```
 func (t Token) LoadPrivateKey(input LoadPrivateKeyInput) (*rsa.PrivateKey, error) {
     var keyData []byte
@@ -193,7 +249,7 @@ func (t Token) LoadPrivateKey(input LoadPrivateKeyInput) (*rsa.PrivateKey, error
     if block == nil {
         return nil, ErrInvalidKey
     }
- 
+
     // https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key
     var key *rsa.PrivateKey
     switch block.Type {
@@ -209,7 +265,7 @@ func (t Token) LoadPrivateKey(input LoadPrivateKeyInput) (*rsa.PrivateKey, error
             return nil, err
         }
     }
- 
+
     return key, nil
 }
 ```
@@ -223,7 +279,7 @@ hexByteArray, err := hex.DecodeString(thumbprint)
 if err != nil {
     return "", err
 }
- 
+
 x5t := b64.URLEncoding.EncodeToString(hexByteArray)
 ```
 
@@ -234,7 +290,7 @@ Use a jwt library to prepare the assertion for signing using RS256 method.
 ```
 // Generate assertion input
 timeNow := time.Now()
- 
+
 token := jwtGo.New(jwtGo.SigningMethodRS256)
 claims := make(jwtGo.MapClaims)
 token.Header["alg"] = "RS256"
@@ -274,7 +330,7 @@ client_id=8c7a8ca7-4de7-4343-a632-363d16cbf3b5
 # Replace {assertion} with your assertion!
 # Replace {tenant} with your Directory ID!
 # Replace {clientid} with your Application ID!
- 
+
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id={clientid}&scope=https%3A%2F%2Fgraph.microsoft.com%2F.default&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&client_assertion={assertion}&grant_type=client_credentials' 'https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token'
 ```
 
