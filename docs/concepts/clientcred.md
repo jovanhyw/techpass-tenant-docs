@@ -132,7 +132,7 @@ A public certificate and private key. Get a certificate issued by CoreSG or publ
 Tenant Admin of a Tenant namespace can upload and manage certificates and client secrets.
 
 **To upload a certificate**
-1. Make sure you have logged in to [TechPass portal](http://portal.techpass.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant namespaces.
+1. Make sure you have logged in to [TechPass portal](https://portal.techpass.suite.gov.sg/) as Tenant Admin or switch to Tenant (Tenant Admin) role to view all your tenant namespaces.
 2. Locate the tenant namespace and click **Manage**.
 3. Choose **Applications** from the side menu.
 4. Locate the application for which you need to upload a new certificate and click the corresponding **Edit** icon ![edit-icon](assets/concept-clientcred/edit-icon.png).
